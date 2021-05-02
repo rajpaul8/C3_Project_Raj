@@ -1,4 +1,3 @@
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,6 @@ public class Restaurant {
     public List<Item> getMenu() {
         //Implemented getMenu method
         return menu;
-
     }
 
     private Item findItemByName(String itemName){
@@ -52,7 +50,6 @@ public class Restaurant {
         Item itemToBeRemoved = findItemByName(itemName);
         if (itemToBeRemoved == null)
             throw new itemNotFoundException(itemName);
-
         menu.remove(itemToBeRemoved);
     }
     public void displayDetails(){
@@ -61,11 +58,8 @@ public class Restaurant {
                 +"Opening time:"+ openingTime +"\n"
                 +"Closing time:"+ closingTime +"\n"
                 +"Menu:"+"\n"+getMenu());
-
     }
-
     public String getName() {
         return name;
     }
-
 }
