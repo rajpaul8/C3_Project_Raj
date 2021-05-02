@@ -3,11 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurant {
+
     private String name;
     private String location;
     public LocalTime openingTime;
     public LocalTime closingTime;
     private List<Item> menu = new ArrayList<Item>();
+    private List<Item> selectedMenu = new ArrayList<Item>();
 
     public Restaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         this.name = name;
@@ -61,5 +63,29 @@ public class Restaurant {
     }
     public String getName() {
         return name;
+    }
+
+    public void IncludeSelectItem(String itemName){
+        Item itemToBeSelected = findItemByName(itemName);
+        selectedMenu.add(itemToBeSelected);
+    }
+
+
+    public void RemoveSelectItem(String itemName){
+        Item deSelected = findItemByName(itemName);
+        selectedMenu.remove(deSelected);
+    }
+
+    public Double displayOrderTotal(){
+        double sum = 0;
+        for(Item item:selectedMenu){
+            sum += item.getPrice();
+        }
+        return sum;
+
+    }
+
+    public List<Item> selectedMenu() {
+        return selectedMenu;
     }
 }
