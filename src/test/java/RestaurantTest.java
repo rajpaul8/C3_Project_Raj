@@ -55,4 +55,21 @@ class RestaurantTest {
         assertEquals("Amelie's cafe",restaurant.getName());
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // Calculating the Cost of the selected Items
+    @Test
+    public void calculated_cost_of_the_selected_list_of_items_from_the_menu_equals_to_388_which_is_the_sum_of_SelectedItems(){
+        // Adding Selected Items from menu to selection list
+        int initialSelectionSize = restaurant.selectedMenu().size();
+        restaurant.IncludeSelectItem("Sweet corn soup");
+        restaurant.IncludeSelectItem("Vegetable lasagne");
+        assertEquals(initialSelectionSize+2,restaurant.selectedMenu().size());
+        //Removing From the selection List
+        int SelectionSize = restaurant.selectedMenu().size();
+        restaurant.RemoveSelectItem("Sweet corn soup");
+        assertEquals(SelectionSize-1,restaurant.selectedMenu().size());
+        restaurant.IncludeSelectItem("Sweet corn soup");
+        assertEquals(2,restaurant.selectedMenu().size());
+        //Get The sum total price of the selected List
+        assertEquals(388,restaurant.displayOrderTotal());
+    }
 }
